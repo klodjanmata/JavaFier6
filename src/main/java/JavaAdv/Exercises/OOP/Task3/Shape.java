@@ -1,8 +1,8 @@
 package JavaAdv.Exercises.OOP.Task3;
 
-public class Shape{
-    private String color;
-    private boolean isFilled;
+public abstract class Shape{
+    protected String color;
+    protected boolean isFilled;
 
     public Shape(String color, boolean isFilled){
         this.color=color;
@@ -13,6 +13,10 @@ public class Shape{
         color = "unknown";
         isFilled = false;
     }
+
+    public abstract double getArea();
+
+    public abstract double getPerimeter();
 
     public String getColor() {
         return color;

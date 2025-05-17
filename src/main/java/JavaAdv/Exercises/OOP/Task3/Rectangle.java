@@ -16,10 +16,12 @@ public class Rectangle extends Shape {
         this.length = length;
     }
 
+    @Override
     public double getArea(){
         return width * length;
     }
 
+    @Override
     public double getPerimeter(){
         return 2 * (width + length);
     }
