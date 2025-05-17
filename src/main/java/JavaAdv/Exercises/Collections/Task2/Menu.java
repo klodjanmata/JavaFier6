@@ -8,6 +8,7 @@ public class Menu {
         System.out.println("2. Remove book");
         System.out.println("3. Print all books");
         System.out.println("4. Find Books By Genre");
+        System.out.println("5. Find Books before Year");
         System.out.println("0. Exit");
     }
 }

@@ -34,6 +34,9 @@ public class Main {
             case 4:
                 bookService.findBookByGenre();
                 break;
+            case 5:
+                bookService.printBeforeYear();
+                break;
             case 0:
                 System.out.println("Exiting...");
                 return true;

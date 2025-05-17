@@ -73,7 +73,17 @@ public class BookService {
         }
     }
 
-    // test comment
+    public void printBeforeYear(){
+        System.out.println("-----Printing books before Year-----");
+        int year = Helper.getIntFromUser("Year: ");
+        List<Book> booksToReturn = new ArrayList<>();
+        for (Book book: bookList) {
+            if (book.getYearOfRelease() < year)
+                booksToReturn.add(book);
+        }
+        printSpecificBookList(booksToReturn);
+    }
+
     public void findBookByGenre(){
         System.out.println("-----Finding Books by Genre-----");
         String input = Helper.getStringFromUser("Genre: ");
