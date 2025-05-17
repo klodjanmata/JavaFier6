@@ -1,6 +1,7 @@
 package JavaAdv.Exercises.Collections.Task2;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,6 +20,16 @@ public class Book {
         this.title = title;
         this.price = price;
         this.yearOfRelease = yearOfRelease;
+        this.authors = authors;
+        this.genre = genre;
+    }
+
+    public Book(String title, int price, int yearOfRelease, Author author, Genre genre) {
+        this.title = title;
+        this.price = price;
+        this.yearOfRelease = yearOfRelease;
+        List<Author> authors = new ArrayList<>();
+        authors.add(author);
         this.authors = authors;
         this.genre = genre;
     }

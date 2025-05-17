@@ -22,4 +22,5 @@ public enum Genre {
     HISTORY_FICTION,
     BIOGRAPHY,
     ASTRONOMY,
+    ADVENTURE
 }

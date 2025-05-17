@@ -8,6 +8,10 @@ public class Author {
     private char gender;
     private int yearOfBirth;
 
+    public Author(String name) {
+        this.name = name;
+    }
+
     public Author(String name, String surname, char gender, int yearOfBirth) {
         this.name = name;
         this.surname = surname;
