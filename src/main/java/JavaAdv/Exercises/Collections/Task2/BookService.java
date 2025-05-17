@@ -84,6 +84,41 @@ public class BookService {
         printSpecificBookList(booksToReturn);
     }
 
+    public void mostExpensive(){
+        Book b = null;
+        for (Book book : bookList){
+            if (b == null || b.getPrice() < book.getPrice() ){
+                b = book;
+            }
+        }
+        System.out.println("Most expensive book is: "+b);
+    }
+
+    public void cheapestBook(){
+        Book b = null;
+        for (Book book : bookList){
+            if (b == null || b.getPrice() > book.getPrice() ){
+                b = book;
+            }
+        }
+        System.out.println("Most expensive book is: "+b);
+    }
+
+
+
+    public boolean findBookByTitle(){
+        System.out.println("-----------Finding Book by Title-----------:");
+        String input = Helper.getStringFromUser("Title: ");
+        for (Book b : bookList){
+            if (b.getTitle().equalsIgnoreCase(input)){
+                System.out.println("We have it!");
+                return true;
+            }
+        }
+        System.out.println("We don't have it!");
+        return  false;
+    }
+
     public void findBookByGenre(){
         System.out.println("-----Finding Books by Genre-----");
         String input = Helper.getStringFromUser("Genre: ");

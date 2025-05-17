@@ -37,6 +37,15 @@ public class Main {
             case 5:
                 bookService.printBeforeYear();
                 break;
+            case 6:
+                bookService.mostExpensive();
+                break;
+            case 7:
+                bookService.cheapestBook();
+                break;
+            case 8:
+                bookService.findBookByTitle();
+                break;
             case 0:
                 System.out.println("Exiting...");
                 return true;
