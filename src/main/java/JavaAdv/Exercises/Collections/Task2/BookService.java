@@ -73,6 +73,26 @@ public class BookService {
         }
     }
 
+    public void findBookByGenre(){
+        System.out.println("-----Finding Books by Genre-----");
+        String input = Helper.getStringFromUser("Genre: ");
+        Genre genre;
+        try {
+            genre = Genre.valueOf(input.toUpperCase());
+        }catch (Exception e){
+            System.out.println("Invalid genre");
+            return;
+        }
+        List<Book> booksToReturn = new ArrayList<>();
+        for (Book b: bookList) {
+            if(b.getGenre().equals(genre)){
+                booksToReturn.add(b);
+            }
+        }
+        printSpecificBookList(booksToReturn);
+
+    }
+
     public void printBookList() {
         System.out.println("Book list:");
         System.out.println("Title \t Price \t Year of release \t Authors \t Genre");
@@ -81,6 +101,18 @@ public class BookService {
             return;
         }
         for (Book b: bookList) {
+            System.out.println(b);
+        }
+    }
+
+    public void printSpecificBookList(List<Book> specificList){
+        System.out.println("Specific book list:");
+        System.out.println("Title \t Price \t Year of release \t Authors \t Genre");
+        if (specificList.isEmpty()) {
+            System.out.println("No books to show");
+            return;
+        }
+        for (Book b: specificList) {
             System.out.println(b);
         }
     }

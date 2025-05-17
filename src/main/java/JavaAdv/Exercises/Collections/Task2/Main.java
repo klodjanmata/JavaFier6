@@ -1,13 +1,47 @@
 package JavaAdv.Exercises.Collections.Task2;
 
+import Helper.Helper;
+
 import java.util.ArrayList;
 
 public class Main {
+    private static BookService bookService = new BookService();
+
     public static void main(String[] args) {
-        BookService bookService = new BookService();
-        bookService.printBookList();
+
+        boolean exit = false;
+        while (!exit){
+            Menu.printMenu();
+            int choice = Helper.getIntFromUser("Enter your choice: ");
+            exit = manageChoice(choice);
+        }
 
 
-        bookService.printBookList();
+
+    }
+
+    public static boolean manageChoice(int choice){
+        switch (choice) {
+            case 1:
+                bookService.addBook();
+                break;
+            case 2:
+                bookService.removeBook();
+                break;
+            case 3:
+                bookService.printBookList();
+                break;
+            case 4:
+                bookService.findBookByGenre();
+                break;
+            case 0:
+                System.out.println("Exiting...");
+                return true;
+            default:
+                System.out.println("Invalid choice");
+                System.out.println("Chose Again!");
+                break;
+        }
+        return false;
     }
 }
