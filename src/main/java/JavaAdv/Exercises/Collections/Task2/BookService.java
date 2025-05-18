@@ -4,7 +4,6 @@ import Helper.Helper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Arrays;
 
 public class BookService {
     private List<Book> bookList;
@@ -103,8 +102,6 @@ public class BookService {
         }
         System.out.println("Most expensive book is: "+b);
     }
-
-
 
     public boolean findBookByTitle(){
         System.out.println("-----------Finding Book by Title-----------:");
