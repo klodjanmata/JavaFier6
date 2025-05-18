@@ -46,6 +46,9 @@ public class Main {
             case 8:
                 bookService.findBookByTitle();
                 break;
+            case 9:
+                bookService.findBooksByPriceRange();
+                break;
             case 0:
                 System.out.println("Exiting...");
                 return true;

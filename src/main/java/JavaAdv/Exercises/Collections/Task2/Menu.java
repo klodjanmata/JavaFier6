@@ -12,6 +12,7 @@ public class Menu {
         System.out.println("6. Most Expensive Book");
         System.out.println("7. Cheapest Book");
         System.out.println("8. Control if a book is on the list");
+        System.out.println("9. Find Books by Price Range");
         System.out.println("0. Exit");
     }
 }

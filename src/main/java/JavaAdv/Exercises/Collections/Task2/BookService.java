@@ -3,7 +3,9 @@ package JavaAdv.Exercises.Collections.Task2;
 import Helper.Helper;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookService {
     private List<Book> bookList;
@@ -146,6 +148,23 @@ public class BookService {
         for (Book b: bookList) {
             System.out.println(b);
         }
+    }
+
+    public void findBooksByPriceRange(){
+        System.out.println("---- Find By Price Range ----");
+        int minPrice = Helper.getIntFromUser("Minimum Price: ");
+        int maxPrice = Helper.getIntFromUser("Maximum Price: ");
+        List<Book> matchingBooks = new ArrayList<>();
+        matchingBooks = bookList.stream()
+            .filter(book -> book.getPrice() >= minPrice && book.getPrice() <= maxPrice)
+            .sorted(Comparator.comparing(Book::getPrice))
+            .collect(Collectors.toList());
+
+        if (matchingBooks.isEmpty()){
+            System.out.println("No books found");
+            return;
+        }
+        printSpecificBookList(matchingBooks);
     }
 
     public void printSpecificBookList(List<Book> specificList){

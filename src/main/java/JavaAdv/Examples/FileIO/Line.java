@@ -31,6 +31,7 @@ public class Line {
         writePoesyToFile();
     }
 
+
     public static void writePoesyToFile(){
         String filePath = "Files/PoeziOutput.txt";
         System.out.println("Trying to write poesy to file");
