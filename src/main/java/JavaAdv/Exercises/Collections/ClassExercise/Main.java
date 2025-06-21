@@ -1,17 +1,83 @@
 package JavaAdv.Exercises.Collections.ClassExercise;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<MobilePhone> phones = new ArrayList<>();
-        fillData(phones);
-
+//        List<MobilePhone> phones = new ArrayList<>();
+//        fillData(phones);
+//
+//        writePhonesToFile(phones);
+//
+//        List<MobilePhone> sortedPhones = phones.stream()
+//                .sorted(Comparator.comparing(MobilePhone::getManufacturer))
+//                .collect(Collectors.toList());
         // Print the list
-        for (MobilePhone phone : phones) {
+        List<MobilePhone> mobilePhones = readFromFile();
+
+        for (MobilePhone phone : mobilePhones) {
             System.out.println(phone);
         }
+    }
+
+    public static List<MobilePhone> readFromFile(){
+        List<MobilePhone> phones = new ArrayList<>();
+        final String FILEPATH = "Files/Phones.csv";
+        final String SEPARATOR = ",";
+        try(BufferedReader br = new BufferedReader(new FileReader(FILEPATH))){
+            String line;
+            boolean isFirstLine = true;
+            while((line = br.readLine()) != null){
+                if(isFirstLine){
+                    isFirstLine = false;
+                    continue;
+                }
+                String[] fields = line.split(SEPARATOR);
+                MobilePhone phone = new MobilePhone();
+                phone.setManufacturer(fields[0]);
+                phone.setModel(fields[1]);
+                phone.setScreenSize(Float.parseFloat(fields[2]));
+                phone.setYearOfProduction(Integer.parseInt(fields[3]));
+                phone.setBatteryCapacity(Float.parseFloat(fields[4]));
+                phone.setPrice(Float.parseFloat(fields[5]));
+                phones.add(phone);
+            }
+            br.close();
+            return phones;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return phones;
+    }
+
+    public static void writePhonesToFile(List<MobilePhone> phones){
+        final String FILEPATH = "Files/Phones.csv";
+        final String SEPARATOR = ",";
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILEPATH))){
+            bw.write(headline());
+            for(MobilePhone phone : phones){
+                bw.newLine();
+                bw.write(phone.getManufacturer() + SEPARATOR);
+                bw.write(phone.getModel() + SEPARATOR);
+                bw.write(phone.getScreenSize() + SEPARATOR);
+                bw.write(phone.getYearOfProduction() + SEPARATOR);
+                bw.write(phone.getBatteryCapacity() + SEPARATOR);
+                bw.write(phone.getPrice() + SEPARATOR);
+            }
+            bw.close();
+            System.out.println("Phones written to " + FILEPATH);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private static String headline(){
+        return "Manufacturer,Model,Screen,Year,Battery,Price" ;
     }
 
     private static void fillData(List<MobilePhone> phones){
