@@ -17,12 +17,12 @@ public class ListExercise {
 //        }
 
         List<Book> sortedList = bookList.stream()
-                .sorted(Comparator.comparing(Book::getTitle))
+                .sorted(Comparator.comparing(Book::getYearOfRelease))
                 .collect(Collectors.toList());
 
         System.out.println("Ordered List: ");
         for (Book book : sortedList) {
-            System.out.println(book.getTitle());
+            System.out.println(book.getTitle() + " --- " + book.getYearOfRelease());
         }
 
 

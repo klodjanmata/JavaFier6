@@ -1,6 +1,7 @@
 package JavaAdv.Exercises.Collections.Task2;
 
 import Helper.Helper;
+import JavaAdv.Exercises.Collections.Task2.FileIO.BookCsvUtil;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -9,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class BookService {
     private List<Book> bookList;
+    private final BookCsvUtil bookCsvUtil = new BookCsvUtil();
 
     private void initBookList() {
         this.bookList = new ArrayList<>();
@@ -165,6 +167,10 @@ public class BookService {
             return;
         }
         printSpecificBookList(matchingBooks);
+    }
+
+    public void writeToFile(){
+        bookCsvUtil.writeToFile(bookList);
     }
 
     public void printSpecificBookList(List<Book> specificList){

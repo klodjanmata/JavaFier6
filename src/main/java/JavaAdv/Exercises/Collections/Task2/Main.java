@@ -49,6 +49,9 @@ public class Main {
             case 9:
                 bookService.findBooksByPriceRange();
                 break;
+            case 10:
+                bookService.writeToFile();
+                break;
             case 0:
                 System.out.println("Exiting...");
                 return true;
