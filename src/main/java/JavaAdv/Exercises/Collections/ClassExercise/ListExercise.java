@@ -1,25 +1,27 @@
 package JavaAdv.Exercises.Collections.ClassExercise;
 
-
 import JavaAdv.Exercises.Collections.Task2.Author;
 import JavaAdv.Exercises.Collections.Task2.Book;
 import JavaAdv.Exercises.Collections.Task2.Genre;
-
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ListExercise {
     public static void main(String[] args) {
         List<Book> bookList = new ArrayList<>();
         fillListOfBooks(bookList);
-        for (Book book : bookList) {
-            System.out.println(book.getTitle());
-        }
+//        for (Book book : bookList) {
+//            System.out.println(book.getTitle());
+//        }
 
-        // TODO order
+        List<Book> sortedList = bookList.stream()
+                .sorted(Comparator.comparing(Book::getTitle))
+                .collect(Collectors.toList());
 
         System.out.println("Ordered List: ");
-        for (Book book : bookList) {
+        for (Book book : sortedList) {
             System.out.println(book.getTitle());
         }
 
