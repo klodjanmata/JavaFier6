@@ -15,5 +15,8 @@ public class Main {
             System.out.println(entry.getValue().getLastName());
         }
 
+        System.out.println("Saving in file...");
+        studentCsvUtil.writeStudentsToFile(studentMap);
+
     }
 }
