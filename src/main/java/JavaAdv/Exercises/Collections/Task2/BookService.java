@@ -3,14 +3,44 @@ package JavaAdv.Exercises.Collections.Task2;
 import Helper.Helper;
 import JavaAdv.Exercises.Collections.Task2.FileIO.BookCsvUtil;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class BookService {
     private List<Book> bookList;
     private final BookCsvUtil bookCsvUtil = new BookCsvUtil();
+
+    // Task 4
+    public void genreHashMap(){
+        HashMap<Genre, String> map = new HashMap<>();
+        for (Book b : bookList){
+            map.put(b.getGenre(), b.getTitle());
+        }
+        for (Map.Entry<Genre, String> e : map.entrySet()){
+            System.out.print(e.getKey() + " --- ");
+            System.out.println(e.getValue());
+        }
+    }
+
+    //Task 5
+    public void priceOrderedStack(){
+        Stack<Book> bookStack = new Stack<>();
+        List<Book> orderedBookList = new ArrayList<>();
+        orderedBookList = this.bookList.stream()
+                .sorted(Comparator.comparing(Book::getPrice))
+                .collect(Collectors.toList());
+        for (Book b : orderedBookList){
+            bookStack.push(b);
+        }
+        for (Book b : bookStack){
+            System.out.println(b.getTitle() + " --- " + b.getPrice());
+        }
+        System.out.println("----------------");
+        while (!bookStack.isEmpty()){
+            Book b = bookStack.pop();
+            System.out.println(b.getTitle() + " ---  " + b.getPrice());
+        }
+    }
 
     private void initBookList() {
         this.bookList = new ArrayList<>();

@@ -52,6 +52,12 @@ public class Main {
             case 10:
                 bookService.writeToFile();
                 break;
+            case 11:
+                bookService.genreHashMap();
+                break;
+            case 12:
+                bookService.priceOrderedStack();
+                break;
             case 0:
                 System.out.println("Exiting...");
                 return true;
