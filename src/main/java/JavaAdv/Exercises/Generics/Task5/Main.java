@@ -14,6 +14,12 @@ public class Main {
         Cat c1 = new Cat("Scottich Fold", "Grey", "Scotty");
         Cat c2 = new Cat("Munchkin", "Black", "Butch");
 
+        danjasPetHouse.addPet(d1);
+        danjasPetHouse.addPet(d2);
+        danjasPetHouse.addPet(c1);
+        danjasPetHouse.addPet(c2);
+
+
 
     }
 }
