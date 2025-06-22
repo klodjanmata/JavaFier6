@@ -1,4 +1,4 @@
-package JavaAdv.Examples.Generics;
+package JavaAdv.Examples.Generics.Liquid;
 
 public class Tea extends Liquid{
     private final String name;

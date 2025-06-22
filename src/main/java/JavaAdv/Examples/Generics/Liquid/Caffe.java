@@ -1,4 +1,4 @@
-package JavaAdv.Examples.Generics;
+package JavaAdv.Examples.Generics.Liquid;
 
 public class Caffe extends Liquid{
     private final String name;
