@@ -16,6 +16,12 @@ public class PetHouse<T extends Pet> {
         this.timetable = timetable;
     }
 
+    public void printPetDetails(){
+        for (T pet : petList){
+            System.out.println(pet);
+        }
+    }
+
     public void addPet(T pet){
         petList.add(pet);
     }

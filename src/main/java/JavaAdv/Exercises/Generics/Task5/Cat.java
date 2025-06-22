@@ -34,4 +34,13 @@ public class Cat extends Pet{
     public void setColour(String colour) {
         this.colour = colour;
     }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "name='" + name + '\'' +
+                ", breed='" + breed + '\'' +
+                ", colour='" + colour + '\'' +
+                '}';
+    }
 }
