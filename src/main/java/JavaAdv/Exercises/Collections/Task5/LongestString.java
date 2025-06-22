@@ -7,6 +7,14 @@ import java.util.List;
 
 public class LongestString {
     public static void main(String[] args) {
+        List<String> words = readFromFile();
+        String longestString = "";
+        for (String word : words) {
+            if (word.length() > longestString.length()){
+                longestString = word;
+            }
+        }
+        System.out.println("Longest String: " + longestString);
 
     }
 
