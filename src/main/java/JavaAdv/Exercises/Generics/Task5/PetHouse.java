@@ -1,19 +1,21 @@
 package JavaAdv.Exercises.Generics.Task5;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PetHouse<T extends Pet> {
     private String name;
     private String address;
-    private String numberOfPets;
+    private int numberOfPets;
     private String timetable;
     private List<T> petList;
 
-    public PetHouse (String name , String address , String numberOfPets , String timetable){
+    public PetHouse (String name , String address , String timetable){
         this.name=name;
         this.address = address;
-        this.numberOfPets = numberOfPets;
+        this.numberOfPets = 0;
         this.timetable = timetable;
+        this.petList = new ArrayList<>();
     }
 
     public void printPetDetails(){
@@ -24,10 +26,12 @@ public class PetHouse<T extends Pet> {
 
     public void addPet(T pet){
         petList.add(pet);
+        numberOfPets++;
     }
 
     public void removePet(T pet){
         petList.remove(pet);
+        numberOfPets--;
     }
 
     public String getAddress() {
@@ -62,11 +66,11 @@ public class PetHouse<T extends Pet> {
         this.address = adress;
     }
 
-    public String getNumberOfPets() {
+    public int getNumberOfPets() {
         return numberOfPets;
     }
 
-    public void setNumberOfPets(String numberOfPets) {
+    public void setNumberOfPets(int numberOfPets) {
         this.numberOfPets = numberOfPets;
     }
 
