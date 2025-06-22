@@ -1,20 +1,12 @@
 package JavaAdv.Exercises.Generics.Task4;
 
-public class Book extends Media {
+public class Movie extends Media {
     private String title;
-    private String author;
+    private int year;
 
-    public Book(String title, String author) {
+    public Movie(String title, int year) {
         this.title = title;
-        this.author = author;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
+        this.year = year;
     }
 
     public String getTitle() {
@@ -25,11 +17,19 @@ public class Book extends Media {
         this.title = title;
     }
 
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     @Override
     public String toString() {
-        return "Book{" +
+        return "Movie{" +
                 "title='" + title + '\'' +
-                ", author='" + author + '\'' +
+                ", year=" + year +
                 '}';
     }
 }
