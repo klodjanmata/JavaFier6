@@ -15,7 +15,7 @@ public class Exercise1And2 {
         List<String> orderedFruits = reverseOrderCaseInsensitiveMap(fruits);
         System.out.println(orderedFruits);
     }
-    // Exercise 1
+    // Exercise1
     public static List<String> reverseOrder(List<String> list){
         return list.stream()
                 .sorted(Comparator.reverseOrder())
