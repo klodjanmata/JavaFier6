@@ -26,3 +26,9 @@ public class Exercise3 {
         System.out.println(".");
     }
 }
+
+//info,
+//info2,
+//info3,
+//info4.
+//
