@@ -3,7 +3,7 @@ package JavaAdvCoding;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Exercise1 {
+public class Exercise1And2 {
     public static void main(String[] args) {
         List<String> fruits = new ArrayList<>();
         fruits.add("spinach");
