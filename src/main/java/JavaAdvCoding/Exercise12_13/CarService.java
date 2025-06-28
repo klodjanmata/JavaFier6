@@ -86,31 +86,31 @@ public class CarService {
         for (Car c : carsList) {
             if (c.getName().equals(inputString)) {
                 listToReturn.add(c);
-                break;
+                continue;
             }
             if (c.getModel().equals(inputString)) {
                 listToReturn.add(c);
-                break;
+                continue;
             }
             if (String.valueOf(c.getYear()).equals(inputString)) {
                 listToReturn.add(c);
-                break;
+                continue;
             }
             if (String.valueOf(c.getPrice()).contains(inputString)){
                 listToReturn.add(c);
-                break;
+                continue;
             }
             if (String.valueOf(c.getEngineType()).equals(inputString)) {
                 listToReturn.add(c);
-                break;
+                continue;
             }
             if (c.getManufacturer().getName().equals(inputString)) {
                 listToReturn.add(c);
-                break;
+                continue;
             }
             if (c.getManufacturer().getCountry().equals(inputString)) {
                 listToReturn.add(c);
-                break;
+                continue;
             }
         }
         return listToReturn;
@@ -164,7 +164,7 @@ public class CarService {
     }
 
     public List<Car> initList(){
-        List<Car> cars = Arrays.asList(
+        List<Car> cars = new ArrayList<>(Arrays.asList(
                 new Car("Ford", "Mustang", 115890, 2005, new Manufacturer("Ford", 1903, "USA"), EngineType.V12),
                 new Car("Mercedes-Benz", "GLE", 114590, 2015, new Manufacturer("Mercedes-Benz", 1926, "Germany"), EngineType.V8),
                 new Car("Ferrari", "488", 125547, 2013, new Manufacturer("Ferrari", 1939, "Italy"), EngineType.F6),
@@ -265,7 +265,7 @@ public class CarService {
                 new Car("Honda", "Accord", 83830, 2009, new Manufacturer("Honda", 1948, "Japan"), EngineType.F6),
                 new Car("Mercedes-Benz", "E-Class", 53141, 2018, new Manufacturer("Mercedes-Benz", 1926, "Germany"), EngineType.V12),
                 new Car("Honda", "Accord", 132642, 2016, new Manufacturer("Honda", 1948, "Japan"), EngineType.V10)
-        );
+        ));
         return cars;
     }
 }
