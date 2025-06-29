@@ -7,11 +7,13 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
+        CarsCsvUtil csv = new CarsCsvUtil();
         int choice;
         while(true){
             Menu.printMainMenu();
             choice = Helper.getIntFromUser("Chose one option: ");
             if (choice == 0){
+                csv.writeToFile(main.carService.getCarsList());
                 return;
             }
             main.manageChoice(choice);
@@ -22,7 +24,7 @@ public class Main {
         Car m4 = new Car("BMW", "M4", 80000, 2025, new Manufacturer("BMW", 1916, "Germany"), EngineType.S6);
         switch (choice) {
             case 1:
-                carService.addToList(getCarUser());
+                carService.addToList(getCarFromUser());
                 break;
             case 2:
                 carService.removeFromList(m4);
@@ -66,7 +68,7 @@ public class Main {
         }
     }
 
-    public Car getCarUser(){
+    public Car getCarFromUser(){
         Car newCar = new Car();
         System.out.println("Give the necessary details for the car: ");
         newCar.setName(Helper.getStringFromUser("Input the name: "));

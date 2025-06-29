@@ -70,6 +70,15 @@ public class Car {
         this.engineType = engineType;
     }
 
+    public String fileWritingFormat(){
+        return  this.getName() + ", "
+                + this.getModel() + ", "
+                + this.getPrice() + ", "
+                + this.getYear() + ", "
+                + this.getManufacturer().fileWritingFormat() + ", "
+                + this.getEngineType().name();
+    }
+
     @Override
     public String toString() {
         return  name + '\t' +

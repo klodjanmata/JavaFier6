@@ -39,6 +39,12 @@ public class Manufacturer {
         this.country = country;
     }
 
+    public String fileWritingFormat(){
+        return  this.getName() + ", "
+                + this.getCountry() + ", "
+                + this.getYearOfEstablishment();
+    }
+
     @Override
     public String toString() {
         return "Manufacturer{" +
