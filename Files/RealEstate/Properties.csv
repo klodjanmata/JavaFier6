@@ -1,2 +1,4 @@
-ID	PropertyType	ApartmentType	City	Neighborhood	Address	ListingType	Area	Price	PricePerSquare	HasFurniture	NeedsInvestment	AvailableNow	AvailableDate	PublishedDate
-P1,APARTMENT,ONE_PLUS_ONE,Fier,Janaq Kilica,Rruga Janaq Kilica,RENT,70,200,2.857143,true,false,true,2025.06.29 15:14,2025.06.29 15:14
+ID,PropertyType,ApartmentType,City,Neighborhood,Address,ListingType,Area,Price,PricePerSquare,HasFurniture,NeedsInvestment,AvailableNow,AvailableDate,PublishedDate,NumberOfRooms,Description
+P1,APARTMENT,ONE_PLUS_ONE,Fier,Janaq Kilica,Rruga Janaq Kilica,RENT,70,200,2.857143,true,false,true,2025.06.29 15:14,2025.06.29 15:14,0,In very good condition
+Hotel1,HOTEL,null,Fier,Center,Rruga Leon Rei,SALE,1000,200000,0.0,false,true,true,2025.06.29 15:37,2025.06.29 15:37,0,Good Location but needs investment
+H2,HOTEL,null,Fier,Center,Central Road,SALE,1500,450000,300.0,false,true,true,2025.06.29 15:44,2025.06.29 15:44,50,Best Location needs investment

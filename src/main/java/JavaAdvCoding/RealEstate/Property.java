@@ -24,12 +24,14 @@ public class Property {
     private boolean availableNow;
     private Date availableDate;
     private Date publishedDate;
+    private int numberOfRooms;
+    private String description;
 
     public Property(String ID, PropertyType propertyType, ApartmentType apartmentType,
                     String city, String neighborhood, String address,
                     ListingType listingType, int area, int price, float pricePerSquare,
                     boolean hasFurniture, boolean needsInvestment, boolean availableNow,
-                    Date availableDate, Date publishedDate) {
+                    Date availableDate, Date publishedDate, int numberOfRooms, String description) {
         this.ID = ID;
         this.propertyType = propertyType;
         this.apartmentType = apartmentType;
@@ -45,17 +47,24 @@ public class Property {
         this.availableNow = availableNow;
         this.availableDate = availableDate;
         this.publishedDate = publishedDate;
+        this.numberOfRooms = numberOfRooms;
+        this.description = description;
     }
 
     public Property(){}
 
-    public static Property getFromUser(){
-        Property p = new Property();
-        p.setID(Helper.getStringFromUser("Property ID: "));
-        System.out.println(PropertyType.printString());
-        p.setPropertyType(PropertyType.valueOf(Helper.getStringFromUser("Property Type: ")));
+    public static Property apartmentFields(Property p){
         System.out.println(ApartmentType.printString());
         p.setApartmentType(ApartmentType.valueOf(Helper.getStringFromUser("ApartmentType: ")));
+        p.setHasFurniture(Helper.getBooleanFromUser("HasFurniture: "));
+        return p;
+    }
+    public static Property hotelFields(Property p){
+        p.setNumberOfRooms(Helper.getIntFromUser("NumberOfRooms: "));
+        return p;
+    }
+
+    public static Property fieldsForAll(Property p){
         p.setCity(Helper.getStringFromUser("City: "));
         p.setNeighborhood(Helper.getStringFromUser("Neighborhood: "));
         p.setAddress(Helper.getStringFromUser("Address: "));
@@ -63,8 +72,6 @@ public class Property {
         p.setListingType(ListingType.valueOf(Helper.getStringFromUser("ListingType: ")));
         p.setArea(Helper.getIntFromUser("Area: "));
         p.setPrice(Helper.getIntFromUser("Price: "));
-        p.setPricePerSquare(((float) p.getPrice()) / p.getArea());
-        p.setHasFurniture(Helper.getBooleanFromUser("HasFurniture: "));
         p.setNeedsInvestment(Helper.getBooleanFromUser("NeedsInvestment: "));
         p.setAvailableNow(Helper.getBooleanFromUser("AvailableNow: "));
         if(!p.isAvailableNow()){
@@ -74,6 +81,28 @@ public class Property {
             p.setAvailableDate(new Date());
         }
         p.setPublishedDate(new Date());
+        if (p.getListingType().equals(ListingType.SALE)){
+            p.setPricePerSquare(((float) p.getPrice()) / p.getArea());
+        }
+        p.setDescription(Helper.getStringFromUser("Description: "));
+        return p;
+    }
+
+
+    public static Property getFromUser(){
+        Property p = new Property();
+        p.setID(Helper.getStringFromUser("Property ID: "));
+        System.out.println(PropertyType.printString());
+        p.setPropertyType(PropertyType.valueOf(Helper.getStringFromUser("Property Type: ")));
+        p = fieldsForAll(p);
+        if (p.getPropertyType().equals(PropertyType.APARTMENT) ||
+                p.getPropertyType().equals(PropertyType.PENTHOUSE) ||
+                p.getPropertyType().equals(PropertyType.VILA)) {
+            p =  apartmentFields(p);
+        }
+        if (p.getPropertyType().equals(PropertyType.HOTEL)) {
+            p = hotelFields(p);
+        }
         return p;
     }
 
@@ -92,7 +121,10 @@ public class Property {
                 + this.isNeedsInvestment() + ","
                 + this.isAvailableNow() + ","
                 + sdf.format(this.getAvailableDate()) + ","
-                + sdf.format(this.getPublishedDate());
+                + sdf.format(this.getPublishedDate()) + ","
+                + this.getNumberOfRooms() + ","
+                + this.getDescription();
+
     }
 
     public String getID() {
@@ -213,6 +245,22 @@ public class Property {
 
     public void setPublishedDate(Date publishedDate) {
         this.publishedDate = publishedDate;
+    }
+
+    public int getNumberOfRooms() {
+        return numberOfRooms;
+    }
+
+    public void setNumberOfRooms(int numberOfRooms) {
+        this.numberOfRooms = numberOfRooms;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

@@ -23,7 +23,11 @@ public class PropertyCsvUtil {
                 Property p = new Property();
                 p.setID(parts[0]);
                 p.setPropertyType(PropertyType.valueOf(parts[1]));
-                p.setApartmentType(ApartmentType.valueOf(parts[2]));
+                if (parts[2] == null || parts[2].isEmpty() ||  parts[2].equals("null")) {
+                    p.setApartmentType(null);
+                }else {
+                    p.setApartmentType(ApartmentType.valueOf(parts[2]));
+                }
                 p.setCity(parts[3]);
                 p.setNeighborhood(parts[4]);
                 p.setAddress(parts[5]);
@@ -36,6 +40,8 @@ public class PropertyCsvUtil {
                 p.setAvailableNow(Boolean.parseBoolean(parts[12]));
                 p.setAvailableDate(sdf.parse(parts[13]));
                 p.setPublishedDate(sdf.parse(parts[14]));
+                p.setNumberOfRooms(Integer.parseInt(parts[15]));
+                p.setDescription(parts[16]);
                 result.add(p);
             }
             br.close();
@@ -60,8 +66,8 @@ public class PropertyCsvUtil {
     }
 
     public String header(){
-        return "ID\tPropertyType\tApartmentType\tCity\tNeighborhood\tAddress\t" +
-            "ListingType\tArea\tPrice\tPricePerSquare\tHasFurniture\tNeedsInvestment\t" +
-            "AvailableNow\tAvailableDate\tPublishedDate";
+        return "ID,PropertyType,ApartmentType,City,Neighborhood,Address," +
+            "ListingType,Area,Price,PricePerSquare,HasFurniture,NeedsInvestment," +
+            "AvailableNow,AvailableDate,PublishedDate,NumberOfRooms,Description";
     }
 }
