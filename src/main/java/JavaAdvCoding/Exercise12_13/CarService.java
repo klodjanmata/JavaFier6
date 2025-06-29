@@ -10,7 +10,7 @@ public class CarService {
     private List<Car> carsList;
 
     public CarService() {
-        this.carsList = initList();
+        this.carsList = initListFromFile();
     }
 
     public void addToList(Car car){
@@ -163,7 +163,7 @@ public class CarService {
         }
     }
 
-    public List<Car> initList(){
+    public List<Car> initListWithGPTData(){
         List<Car> cars = new ArrayList<>(Arrays.asList(
                 new Car("Ford", "Mustang", 115890, 2005, new Manufacturer("Ford", 1903, "USA"), EngineType.V12),
                 new Car("Mercedes-Benz", "GLE", 114590, 2015, new Manufacturer("Mercedes-Benz", 1926, "Germany"), EngineType.V8),
@@ -267,5 +267,10 @@ public class CarService {
                 new Car("Honda", "Accord", 132642, 2016, new Manufacturer("Honda", 1948, "Japan"), EngineType.V10)
         ));
         return cars;
+    }
+
+    public List<Car> initListFromFile(){
+        CarsCsvUtil csvUtil = new CarsCsvUtil();
+        return csvUtil.readFromFile();
     }
 }
