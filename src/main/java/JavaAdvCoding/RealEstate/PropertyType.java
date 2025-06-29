@@ -1,5 +1,7 @@
 package JavaAdvCoding.RealEstate;
 
+import JavaAdvCoding.Exercise12_13.EngineType;
+
 public enum PropertyType {
     APARTMENT,
     PENTHOUSE,
@@ -7,5 +9,14 @@ public enum PropertyType {
     WAREHOUSE,
     BUSINESS,
     LAND,
-    HOTEL
+    HOTEL;
+
+    public static String printString() {
+        String result = "[";
+        for (PropertyType pt : PropertyType.values()) {
+            result += pt + ", ";
+        }
+        result += "]";
+        return result;
+    }
 }

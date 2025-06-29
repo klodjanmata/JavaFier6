@@ -1,9 +1,14 @@
 package JavaAdvCoding.RealEstate;
 
+import Helper.Helper;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
 public class Property {
+    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+
     private String ID;
     private PropertyType propertyType;
     private ApartmentType apartmentType;
@@ -43,6 +48,52 @@ public class Property {
     }
 
     public Property(){}
+
+    public static Property getFromUser(){
+        Property p = new Property();
+        p.setID(Helper.getStringFromUser("Property ID: "));
+        System.out.println(PropertyType.printString());
+        p.setPropertyType(PropertyType.valueOf(Helper.getStringFromUser("Property Type: ")));
+        System.out.println(ApartmentType.printString());
+        p.setApartmentType(ApartmentType.valueOf(Helper.getStringFromUser("ApartmentType: ")));
+        p.setCity(Helper.getStringFromUser("City: "));
+        p.setNeighborhood(Helper.getStringFromUser("Neighborhood: "));
+        p.setAddress(Helper.getStringFromUser("Address: "));
+        System.out.println(ListingType.printString());
+        p.setListingType(ListingType.valueOf(Helper.getStringFromUser("ListingType: ")));
+        p.setArea(Helper.getIntFromUser("Area: "));
+        p.setPrice(Helper.getIntFromUser("Price: "));
+        p.setPricePerSquare(((float) p.getPrice()) / p.getArea());
+        p.setHasFurniture(Helper.getBooleanFromUser("HasFurniture: "));
+        p.setNeedsInvestment(Helper.getBooleanFromUser("NeedsInvestment: "));
+        p.setAvailableNow(Helper.getBooleanFromUser("AvailableNow: "));
+        if(!p.isAvailableNow()){
+            p.setAvailableDate(Helper.getDateFromUser("Available Date: "));
+        }
+        else {
+            p.setAvailableDate(new Date());
+        }
+        p.setPublishedDate(new Date());
+        return p;
+    }
+
+    public String fileWritingFormat(){
+        return this.getID() + ","
+                + this.getPropertyType() + ","
+                + this.getApartmentType() + ","
+                + this.getCity() + ","
+                + this.getNeighborhood() + ","
+                + this.getAddress() + ","
+                + this.getListingType() + ","
+                + this.getArea() + ","
+                + this.getPrice()+ ","
+                + this.getPricePerSquare() + ","
+                + this.isHasFurniture() + ","
+                + this.isNeedsInvestment() + ","
+                + this.isAvailableNow() + ","
+                + sdf.format(this.getAvailableDate()) + ","
+                + sdf.format(this.getPublishedDate());
+    }
 
     public String getID() {
         return ID;

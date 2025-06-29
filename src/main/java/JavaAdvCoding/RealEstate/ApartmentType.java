@@ -1,5 +1,7 @@
 package JavaAdvCoding.RealEstate;
 
+import JavaAdvCoding.Exercise12_13.EngineType;
+
 public enum ApartmentType {
     ONE_PLUS_ONE("1+1"),
     TWO_PLUS_ONE("2+1"),
@@ -28,5 +30,14 @@ public enum ApartmentType {
             }
         }
         return null;
+    }
+
+    public static String printString() {
+        String result = "[";
+        for (ApartmentType type : values()) {
+            result += type + ", ";
+        }
+        result += "]";
+        return result;
     }
 }
