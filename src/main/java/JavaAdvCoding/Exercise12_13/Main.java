@@ -22,7 +22,7 @@ public class Main {
         Car m4 = new Car("BMW", "M4", 80000, 2025, new Manufacturer("BMW", 1916, "Germany"), EngineType.S6);
         switch (choice) {
             case 1:
-                carService.addToList(m4);
+                carService.addToList(getCarUser());
                 break;
             case 2:
                 carService.removeFromList(m4);
@@ -64,6 +64,30 @@ public class Main {
                 System.out.println("Invalid choice");
                 break;
         }
+    }
+
+    public Car getCarUser(){
+        Car newCar = new Car();
+        System.out.println("Give the necessary details for the car: ");
+        newCar.setName(Helper.getStringFromUser("Input the name: "));
+        newCar.setModel(Helper.getStringFromUser("Input the model: "));
+        newCar.setYear(Helper.getIntFromUser("Input the year: "));
+        newCar.setPrice(Helper.getIntFromUser("Input the price: "));
+        System.out.println("Supported Engine types: " + EngineType.printString());
+        try{
+            newCar.setEngineType(EngineType.valueOf(Helper.getStringFromUser("Input the engine: ").toUpperCase()));
+        }
+        catch (IllegalArgumentException e){
+            System.out.println("Invalid choice, engine type set to default: OTHER");
+            newCar.setEngineType(EngineType.OTHER);
+        }
+        Manufacturer m = new Manufacturer();
+        System.out.println("Give the manufacturer details: ");
+        m.setName(Helper.getStringFromUser("Input the name: "));
+        m.setCountry(Helper.getStringFromUser("Input the country: "));
+        m.setYearOfEstablishment(Helper.getIntFromUser("Input the year of establishment: "));
+        newCar.setManufacturer(m);
+        return newCar;
     }
 
     public Main (){

@@ -10,5 +10,14 @@ public enum EngineType {
     S3,
     F4,
     F6,
-    ELECTRIC
+    ELECTRIC,
+    OTHER;
+
+    public static String printString() {
+        String result = "";
+        for (EngineType engineType : EngineType.values()) {
+            result += engineType + ", ";
+        }
+        return result;
+    }
 }
